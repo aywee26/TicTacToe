@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Games\" />
+    <Folder Include="Features\Games\Profiles\" />
   </ItemGroup>
 
 </Project>
