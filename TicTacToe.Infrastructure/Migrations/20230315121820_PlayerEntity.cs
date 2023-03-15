@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace TicTacToe.Migrations
+namespace TicTacToe.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class PlayerEntity : Migration

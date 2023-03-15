@@ -1,4 +1,4 @@
-﻿using TicTacToe.Entities;
+﻿using TicTacToe.Domain.Entities;
 
 namespace TicTacToe.Repositories.Abstractions;
 

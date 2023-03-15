@@ -1,14 +1,15 @@
 ﻿using Ardalis.GuardClauses;
 using Microsoft.EntityFrameworkCore;
-using TicTacToe.Contexts;
-using TicTacToe.Repositories;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using TicTacToe.Infrastructure.Repositories;
 using TicTacToe.Repositories.Abstractions;
 
-namespace TicTacToe;
+namespace TicTacToe.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         Guard.Against.Null(services, nameof(services));
 

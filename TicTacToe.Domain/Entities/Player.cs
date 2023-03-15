@@ -1,4 +1,4 @@
-﻿namespace TicTacToe.Entities;
+﻿namespace TicTacToe.Domain.Entities;
 
 public class Player
 {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TicTacToe.Entities;
+using TicTacToe.Domain.Entities;
 using TicTacToe.Repositories.Abstractions;
 
 namespace TicTacToe.Controllers;

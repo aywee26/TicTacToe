@@ -1,10 +1,9 @@
 ﻿using Ardalis.GuardClauses;
 using Microsoft.EntityFrameworkCore;
-using TicTacToe.Entities;
-using TicTacToe.Contexts;
+using TicTacToe.Domain.Entities;
 using TicTacToe.Repositories.Abstractions;
 
-namespace TicTacToe.Repositories;
+namespace TicTacToe.Infrastructure.Repositories;
 
 public class PlayerRepository : IPlayerRepository
 {
