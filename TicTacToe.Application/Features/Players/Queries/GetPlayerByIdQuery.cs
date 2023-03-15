@@ -15,8 +15,8 @@ public class GetPlayerByIdQueryHandler : IRequestHandler<GetPlayerByIdQuery, Pla
 
     public GetPlayerByIdQueryHandler(IPlayerRepository playerRepository, IMapper mapper)
     {
-        _playerRepository = playerRepository;
-        _mapper = mapper;
+        _playerRepository = Guard.Against.Null(playerRepository);
+        _mapper = Guard.Against.Null(mapper);
     }
 
     public async Task<PlayerDto?> Handle(GetPlayerByIdQuery request, CancellationToken cancellationToken)

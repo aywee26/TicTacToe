@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Ardalis.GuardClauses;
+using AutoMapper;
 using MediatR;
 using TicTacToe.Application.Features.Games.Models;
 
@@ -12,7 +13,7 @@ public class GetGamesQueryHandler : IRequestHandler<GetGamesQuery, IEnumerable<G
 
     public GetGamesQueryHandler(IMapper mapper)
     {
-        _mapper = mapper;
+        _mapper = Guard.Against.Null(mapper);
     }
 
     public Task<IEnumerable<GameDto>> Handle(GetGamesQuery request, CancellationToken cancellationToken)

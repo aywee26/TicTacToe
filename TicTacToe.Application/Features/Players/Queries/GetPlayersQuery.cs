@@ -15,8 +15,8 @@ public class GetPlayersQueryHandler : IRequestHandler<GetPlayersQuery, IEnumerab
 
     public GetPlayersQueryHandler(IPlayerRepository playerRepository, IMapper mapper)
     {
-        _playerRepository = playerRepository;
-        _mapper = mapper;
+        _playerRepository = Guard.Against.Null(playerRepository);
+        _mapper = Guard.Against.Null(mapper);
     }
 
     public async Task<IEnumerable<PlayerDto>> Handle(GetPlayersQuery request, CancellationToken cancellationToken)
