@@ -1,11 +1,13 @@
-﻿namespace TicTacToe.Domain.Entities;
+﻿using Ardalis.GuardClauses;
+
+namespace TicTacToe.Domain.Entities;
 
 public class Player
 {
     public Player(Guid id, string name)
     {
         Id = id;
-        Name = name;
+        Name = Guard.Against.Null(name);
     }
 
     public Guid Id { get; private set; }

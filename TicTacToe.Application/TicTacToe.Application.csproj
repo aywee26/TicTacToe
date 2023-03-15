@@ -16,4 +16,8 @@
     <ProjectReference Include="..\TicTacToe.Domain\TicTacToe.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Games\" />
+  </ItemGroup>
+
 </Project>
