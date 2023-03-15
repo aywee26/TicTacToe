@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TicTacToe.Application.Repositories.Abstractions;
 using TicTacToe.Infrastructure.Repositories;
 using TicTacToe.Repositories.Abstractions;
 
@@ -22,6 +23,7 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IPlayerRepository, PlayerRepository>();
+        services.AddScoped<IGameRepository, GameRepository>();
 
         return services;
     }
