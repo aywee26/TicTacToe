@@ -13,6 +13,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider.GetRequiredService<AppDbContextInitializer>();
+    await initializer.ApplyMigrations();
+}
+
 app.UseSwagger();
 app.UseSwaggerUI();
 

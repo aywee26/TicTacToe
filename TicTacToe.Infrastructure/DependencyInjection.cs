@@ -22,6 +22,8 @@ public static class DependencyInjection
             return new AppDbContext(options);
         });
 
+        services.AddScoped<AppDbContextInitializer>();
+
         services.AddScoped<IPlayerRepository, PlayerRepository>();
         services.AddScoped<IGameRepository, GameRepository>();
 
