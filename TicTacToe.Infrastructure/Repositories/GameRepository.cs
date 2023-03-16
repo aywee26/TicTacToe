@@ -30,4 +30,11 @@ public class GameRepository : IGameRepository
             .ThenInclude(gp => gp.Player);
         return await query.FirstOrDefaultAsync(cancellationToken);
     }
+
+    public async Task<Game> CreateGameAsync(Game game, CancellationToken cancellationToken = default)
+    {
+        var createdGame = await _context.Games.AddAsync(game, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+        return createdGame.Entity;
+    }
 }

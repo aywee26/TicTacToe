@@ -16,5 +16,5 @@ public class Game
 
     public DateTime CreatedAt { get; private set; }
 
-    public ICollection<GamePlayer> GamePlayers { get; private set; } = new GamePlayer[2];
+    public ICollection<GamePlayer> GamePlayers { get; private set; } = new List<GamePlayer>(2);
 }

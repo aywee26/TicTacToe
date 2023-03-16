@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TicTacToe.Application.Features.Games.Commands;
 using TicTacToe.Application.Features.Games.Models;
 using TicTacToe.Application.Features.Games.Queries;
 
@@ -31,8 +32,9 @@ public class GameController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<GameDto> CreateGame(CancellationToken cancellationToken)
+    public async Task<ActionResult<GameDto>> CreateGame(PlayerRequestDto players, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var game = await _mediator.Send(new CreateGameCommand(players), cancellationToken);
+        return CreatedAtAction(nameof(GetGameById), new { id = game.Id }, game);
     }
 }
