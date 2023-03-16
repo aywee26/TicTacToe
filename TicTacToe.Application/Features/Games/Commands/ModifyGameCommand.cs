@@ -5,6 +5,7 @@ using TicTacToe.Application.Features.Games.Models;
 using TicTacToe.Application.Repositories.Abstractions;
 using TicTacToe.Domain.Entities;
 using TicTacToe.Domain.Enums;
+using TicTacToe.Domain.Exceptions;
 
 namespace TicTacToe.Application.Features.Games.Commands;
 
@@ -26,15 +27,15 @@ public class UpdateGameCommandHandler : IRequestHandler<UpdateGameCommand, GameD
         Guard.Against.Null(request, nameof(request));
 
         var game = await _gameRepository.GetGameByIdAsync(request.Id, cancellationToken)
-            ?? throw new ArgumentException("Game not found!");
+            ?? throw new GameNotFoundException(request.Id);
 
         if (!game.Status.Contains("Turn"))
-            throw new InvalidOperationException("Game is over!");
+            throw new GameOverException();
 
         if (request.Row < 0 || request.Row > 2)
-            throw new ArgumentException("Row is incorrect!");
+            throw new ArgumentException($"Row must be between 0 and 2", nameof(request.Row));
         if (request.Column < 0 || request.Column > 2)
-            throw new ArgumentException("Column is incorrect!");
+            throw new ArgumentException($"Column must be between 0 and 2", nameof(request.Column));
 
         var gameState = game.State.ToCharArray();
         var symbol = (game.Turn % 2 == 1) ? 'X' : 'O';
@@ -50,7 +51,7 @@ public class UpdateGameCommandHandler : IRequestHandler<UpdateGameCommand, GameD
     {
         int index = row * 3 + column;
         if (state[index] != '.')
-            throw new InvalidOperationException("The field is taken!");
+            throw new SpaceFullException(row, column);
         state[index] = symbol;
     }
 
