@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using TicTacToe.Application.Features.Games.Commands;
 using TicTacToe.Application.Features.Games.Models;
 using TicTacToe.Application.Features.Games.Queries;
@@ -36,5 +37,12 @@ public class GameController : ControllerBase
     {
         var game = await _mediator.Send(new CreateGameCommand(players), cancellationToken);
         return CreatedAtAction(nameof(GetGameById), new { id = game.Id }, game);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult<GameDto>> UpdateGame(Guid id, int row, int column, CancellationToken cancellationToken)
+    {
+        var updatedGame = await _mediator.Send(new UpdateGameCommand(id, row, column), cancellationToken);
+        return Ok(updatedGame);
     }
 }

@@ -26,6 +26,9 @@ public class AppDbContext : DbContext
         game.HasKey(g => g.Id);
         game.Property(g => g.CreatedAt).IsRequired();
         game.HasIndex(g => g.CreatedAt);
+        game.Property(g => g.Turn).IsRequired();
+        game.Property(g => g.State).IsRequired().HasMaxLength(9);
+        game.Property(g => g.Status).IsRequired().HasMaxLength(16);
 
         var gamePlayer = modelBuilder.Entity<GamePlayer>();
         gamePlayer.HasKey("GameId", "PlayerId");

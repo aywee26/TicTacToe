@@ -9,4 +9,6 @@ public interface IGameRepository
     Task<Game?> GetGameByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
     Task<Game> CreateGameAsync(Game game, CancellationToken cancellationToken = default);
+
+    Task<Game> UpdateGameAsync(Game game, CancellationToken cancellationToken = default);
 }

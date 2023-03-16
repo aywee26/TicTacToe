@@ -12,6 +12,9 @@ public class GameProfile : Profile
             .ConstructUsing(g => new GameDto(
                 g.Id,
                 g.CreatedAt,
-                g.GamePlayers.Select(gp => new GamePlayerDto(gp.Player.Id, gp.Player.Name))));
+                g.GamePlayers.Select(gp => new GamePlayerDto(gp.Player.Id, gp.Player.Name)),
+                g.Status,
+                g.State
+            ));
     }
 }

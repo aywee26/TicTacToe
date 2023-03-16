@@ -14,7 +14,7 @@ public class GamePlayer
         Player = Guard.Against.Null(player);
     }
 
-    public Game Game { get; private set; }
+    public Game Game { get; private set; } = default!;
 
-    public Player Player { get; private set; }
+    public Player Player { get; private set; } = default!;
 }

@@ -33,8 +33,17 @@ public class GameRepository : IGameRepository
 
     public async Task<Game> CreateGameAsync(Game game, CancellationToken cancellationToken = default)
     {
+        Guard.Against.Null(game, nameof(game));
         var createdGame = await _context.Games.AddAsync(game, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
         return createdGame.Entity;
+    }
+
+    public async Task<Game> UpdateGameAsync(Game game, CancellationToken cancellationToken = default)
+    {
+        Guard.Against.Null(game, nameof(game));
+        var result = _context.Games.Update(game);
+        await _context.SaveChangesAsync(cancellationToken);
+        return result.Entity;
     }
 }
